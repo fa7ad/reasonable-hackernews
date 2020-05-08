@@ -1,0 +1,1 @@
+let let_ = promise => callback => promise |> Js.Promise.then_(callback);

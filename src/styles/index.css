@@ -1,0 +1,61 @@
+@import '~modern-normalize';
+
+:root {
+  --brand-color: #ff4000;
+  --fg-color: #2F4858;
+  --bg-color: #fdf6f1;
+  --alt-color: #FFE6D6;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+
+  color: var(--fg-color);
+}
+
+#root {
+  flex-grow: 1;
+}
+
+.navbar {
+  background-color: #fff;
+  border-bottom: 1px solid var(--alt-color);
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar .brand {
+  flex: 0 0 3em;
+  padding: 0.5em;
+}
+
+.navbar .navbar-menu {
+  flex: 1 1 50%;
+  
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbar-menu a {
+  display: flex;
+  align-items: center;
+  padding: 1em 0.5em;
+}
+
+.navbar-menu a,
+.navbar-menu a:link,
+.navbar-menu a:active {
+  color: var(--brand-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+.navbar-menu a:hover {
+  background-color: var(--bg-color);
+}

@@ -1,5 +1,5 @@
 {
-  "name": "reason-react-starter",
+  "name": "reasonable-hackernews",
   "reason": {
     "react-jsx": 3
   },
@@ -7,7 +7,7 @@
     "dir": "src",
     "subdirs": true
   },
-  "bsc-flags": ["-bs-super-errors", "-bs-no-version-header"],
+  "bsc-flags": ["-bs-super-errors", "-bs-no-version-header", "-bs-g"],
   "package-specs": [
     {
       "module": "commonjs",
@@ -16,6 +16,13 @@
   ],
   "suffix": ".bs.js",
   "namespace": true,
-  "bs-dependencies": ["reason-react"],
+  "bs-dependencies": [
+    "reason-react",
+    "reductive",
+    "bs-axios",
+    "decco",
+    "reason-promise"
+  ],
+  "ppx-flags": ["bs-let/ppx", "decco/ppx"],
   "refmt": 3
 }

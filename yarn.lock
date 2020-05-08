@@ -2140,6 +2140,13 @@ aws4@^1.8.0:
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.9.1.tgz#7e33d8f7d449b3f673cd72deb9abdc552dbe528e"
   integrity sha512-wMHVg2EOHaMRxbzgFJ9gtjOOCrI80OHLG14rxi28XwOW8ux6IiEbRCGGGqCtdAIg4FQCbW20k9RsT4y3gJlFug==
 
+axios@^0.19.2:
+  version "0.19.2"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.19.2.tgz#3ea36c5d8818d0d5f8a8a97a6d36b86cdc00cb27"
+  integrity sha512-fjgm5MvRHLhx+osE2xoekY70AhARk3a6hkN+3Io1jc00jtquGvxYlKlsFUhmUET0V5te6CcZI7lcv2Ym61mjHA==
+  dependencies:
+    follow-redirects "1.5.10"
+
 axobject-query@^2.0.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/axobject-query/-/axobject-query-2.1.2.tgz#2bdffc0371e643e5f03ba99065d5179b9ca79799"
@@ -2511,6 +2518,18 @@ browserslist@4.10.0, browserslist@^4.0.0, browserslist@^4.6.2, browserslist@^4.6
     electron-to-chromium "^1.3.378"
     node-releases "^1.1.52"
     pkg-up "^3.1.0"
+
+bs-axios@^0.0.43:
+  version "0.0.43"
+  resolved "https://registry.yarnpkg.com/bs-axios/-/bs-axios-0.0.43.tgz#7ab10c7252802b168b261ef418558b7f30505b8d"
+  integrity sha512-TI+LZ3L4KurI/D6O60Ao04OYoknla7EJuCRBRQvWohxKO7ZMYThelYEEeChIVjjqZxukIVAag3JQ3+/WCJvwrg==
+  dependencies:
+    axios "^0.19.2"
+
+bs-let@^0.1.16:
+  version "0.1.16"
+  resolved "https://registry.yarnpkg.com/bs-let/-/bs-let-0.1.16.tgz#63cd449ed02c75f87eceb248d45963937afdd4ed"
+  integrity sha512-pdbSNe/QRpqgqS72dYDlkZ7kqMHc5aJkLgipLS8BFMRx+hQqkOo0JOpxWZQeDj1T677e302xgmV+Mid5gvmnBg==
 
 bs-platform@^7.2.2:
   version "7.2.2"
@@ -3459,6 +3478,13 @@ debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.9:
   dependencies:
     ms "2.0.0"
 
+debug@=3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
+  integrity sha512-OX8XqP7/1a9cqkxYw2yXss15f26NKWBpDXQd0/uK/KPqdQhxbPa994hnzjcE2VqQpDslf55723cKPUOGSmMY3g==
+  dependencies:
+    ms "2.0.0"
+
 debug@^3.0.0, debug@^3.1.1, debug@^3.2.5:
   version "3.2.6"
   resolved "https://registry.yarnpkg.com/debug/-/debug-3.2.6.tgz#e83d17de16d8a7efb7717edbe5fb10135eee629b"
@@ -3477,6 +3503,11 @@ decamelize@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
   integrity sha1-9lNNFRSCabIDUue+4m9QH5oZEpA=
+
+decco@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/decco/-/decco-1.2.1.tgz#f64b68c5ef1a689d438b6064fbf93af0f8cfbbca"
+  integrity sha512-esHlkq1D6elqdeqVG2EZfkcQ2g5knhMfeACxwiIc1KjOb3D2a+rQfRt9KpNBIZkl6kiQmH6Wwnp3yCIckj/S2A==
 
 decode-uri-component@^0.2.0:
   version "0.2.0"
@@ -4513,6 +4544,13 @@ flush-write-stream@^1.0.0:
   dependencies:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
+
+follow-redirects@1.5.10:
+  version "1.5.10"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.5.10.tgz#7b7a9f9aea2fdff36786a94ff643ed07f4ff5e2a"
+  integrity sha512-0V5l4Cizzvqt5D44aTXbFZz+FtyXV1vrDN6qrelxtfYQKW0KO0W2T/hkE8xvGa/540LkZlkaUjO4ailYTFtHVQ==
+  dependencies:
+    debug "=3.1.0"
 
 follow-redirects@^1.0.0:
   version "1.10.0"
@@ -6773,6 +6811,11 @@ mkdirp@^0.5.1, mkdirp@^0.5.3, mkdirp@~0.5.1:
   dependencies:
     minimist "^1.2.5"
 
+modern-normalize@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/modern-normalize/-/modern-normalize-0.6.0.tgz#21a469988edfc7c9020348e7a3b5b3583a1c9406"
+  integrity sha512-gzvL1uFLV4EErHhaKoqTcrx52/sea6AIcMFWz/GBCuFrDBp485wSgyX5M+MZsj+grfcuqYLQGfHjDRrCvvwZLw==
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -8709,6 +8752,11 @@ realpath-native@^1.1.0:
   dependencies:
     util.promisify "^1.0.0"
 
+reason-promise@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/reason-promise/-/reason-promise-1.0.2.tgz#22b9bb4097ce511190182b948aef11427d5b8b86"
+  integrity sha512-j8DWV+71wNEKQmyW6zBOowIZq1Qec5CDWyLI37BvgOmAZgRFGFQ1MaJnbhqDe3JsYmaGyqdNMmpCJLl9EDbDAg==
+
 reason-react@^0.7.1:
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/reason-react/-/reason-react-0.7.1.tgz#e6acea88542cd44398cd980093b8a2ab2722744e"
@@ -8731,6 +8779,13 @@ redent@^3.0.0:
   dependencies:
     indent-string "^4.0.0"
     strip-indent "^3.0.0"
+
+reductive@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/reductive/-/reductive-2.0.1.tgz#23062796549f329bc4216adaad96fe103a120f29"
+  integrity sha512-uOaB+oJSp/dia2T7issdqDvfBhlZrzZ0lYlVd73Pn0MzIBl/jGqEWuA/JbT5KzpRRCTs/OS5XhelkVQKfyadTw==
+  dependencies:
+    use-subscription "^1.0.0"
 
 regenerate-unicode-properties@^8.2.0:
   version "8.2.0"
@@ -10223,6 +10278,13 @@ url@^0.11.0:
   dependencies:
     punycode "1.3.2"
     querystring "0.2.0"
+
+use-subscription@^1.0.0:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/use-subscription/-/use-subscription-1.4.1.tgz#edcbcc220f1adb2dd4fa0b2f61b6cc308e620069"
+  integrity sha512-7+IIwDG/4JICrWHL/Q/ZPK5yozEnvRm6vHImu0LKwQlmWGKeiF7mbAenLlK/cTNXrTtXHU/SFASQHzB6+oSJMQ==
+  dependencies:
+    object-assign "^4.1.1"
 
 use@^3.1.0:
   version "3.1.1"

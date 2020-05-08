@@ -1,21 +1,23 @@
-[%bs.raw {|require("./index.css")|}];
+[%bs.raw {|require("./styles/index.css")|}];
 
-module ServiceWorker {
+module ServiceWorker = {
   [@bs.module "./serviceWorker"]
-  external unregister : (unit => unit) = "unregister";
-  [@bs.module "./serviceWorker"]
-  external register : (unit => unit) = "register";
-}
+  external unregister: unit => unit = "unregister";
+  [@bs.module "./serviceWorker"] external register: unit => unit = "register";
+};
 
-module StrictMode {
+module StrictMode = {
   [@bs.module "react"] [@react.component]
   external make: (~children: React.element=?) => React.element = "StrictMode";
 };
 
-module ReactApp {
+module ReactApp = {
   [@react.component]
-  let make = () => <StrictMode> <App /> </StrictMode>;
-}
+  let make = () =>
+    <StrictMode>
+      <AppStore.Provider store=AppStore.appStore> <App /> </AppStore.Provider>
+    </StrictMode>;
+};
 
 ReactDOMRe.renderToElementWithId(<ReactApp />, "root");
 
