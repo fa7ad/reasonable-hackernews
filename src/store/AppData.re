@@ -11,8 +11,26 @@ type post = {
   url: string,
 };
 
-
-type sort =
+type order =
   | NoSort
   | Ascending
   | Descending;
+
+type field =
+  | Title
+  | Date
+  | Votes
+  | NoField;
+
+type sort = {
+  order,
+  field,
+};
+
+let label_of_field = field =>
+  switch (field) {
+  | Title => "Title"
+  | Date => "Date"
+  | Votes => "Votes"
+  | NoField => "None"
+  };

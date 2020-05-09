@@ -1,4 +1,4 @@
-[%bs.raw {|require("./styles/index.css")|}];
+[%bs.raw {|require("./styles/index.sass")|}];
 
 module ServiceWorker = {
   [@bs.module "./serviceWorker"]

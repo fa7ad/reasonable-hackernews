@@ -11,10 +11,21 @@ type appState = {
   sort,
 };
 
+let initialState = {
+  posts: [],
+  sort: {
+    order: NoSort,
+    field: NoField,
+  },
+};
+
 let appReducer = (state, action) => {
   switch (action) {
   | SortAction(action) => {...state, sort: sortReducer(state.sort, action)}
-  | PostAction(action) => {...state, posts: postReducer(state.posts, action)}
+  | PostAction(action) => {
+      ...state,
+      posts: postReducer(state.posts, action),
+    }
   | _ => state
   };
 };
@@ -25,7 +36,7 @@ let thunkedLogger = (store, next) =>
 let appStore =
   Reductive.Store.create(
     ~reducer=appReducer,
-    ~preloadedState={posts: [], sort: NoSort},
+    ~preloadedState=initialState,
     ~enhancer=thunkedLogger,
     (),
   );

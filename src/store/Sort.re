@@ -2,13 +2,13 @@ open AppData;
 
 type sortAction =
   | Clear
-  | SortAscending
-  | SortDescending;
+  | SortAscending(field)
+  | SortDescending(field);
 
 let sortReducer = (_, action) => {
   switch (action) {
-  | Clear => NoSort
-  | SortAscending => Ascending
-  | SortDescending => Descending
+  | Clear => {order: NoSort, field: NoField}
+  | SortAscending(field) => {order: Ascending, field}
+  | SortDescending(field) => {order: Descending, field}
   };
 };
