@@ -3,13 +3,17 @@ type post = {
   by: string,
   descendants: int,
   id: int,
-  kids: list(int),
+  kids: option(list(int)),
   score: int,
   time: int,
   title: string,
-  type_: string,
-  url: string,
+  [@decco.key "type"]
+  type_: option(string),
+  url: option(string),
 };
+
+[@decco]
+type postList = list(int);
 
 type order =
   | NoSort

@@ -1,5 +1,10 @@
 [@react.component]
 let make = () => {
+  let dispatch = AppStore.useDispatch();
+  React.useEffect1(() => {
+    dispatch(ReduxThunk.Thunk(Actions.fetchPosts));
+    Some(() => ());
+  }, [|dispatch|]);
   <>
     <Navbar />
     <div className="container">

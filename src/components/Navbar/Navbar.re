@@ -15,27 +15,22 @@ let make = () => {
 
   let label_and_icon = name => {
     let label = label_of_field(name);
-    switch (sortOrder, sortField == name, sortField == NoField) {
-    | (_, true, true) => label->rs
-    | (Descending, true, false) => {j|$label ▲|j}->rs
+    switch (sortOrder, sortField == name) {
+    | (Descending, true) => {j|$label ▲|j}->rs
     | _ => {j|$label ▼|j}->rs
     };
   };
 
-  let sortFields = [Title, Date, Votes, NoField];
+  let sortFields = [Title, Date, Votes];
   let changeSort = (_field, _) => ();
 
   <section className="navbar">
     <div className="brand"> <Logo className="brand-logo" role="logo" /> </div>
-    <nav className="navbar-menu">
-      {ReactUtils.map_list(
-         field => {
-           let label = label_and_icon(field);
-           <a href="#" onClick={changeSort(field)}> label </a>;
-         },
-         sortFields,
-       )}
-      <a href="https://github.com/fa7ad"> "My GitHub"->rs </a>
-    </nav>
+    <NavItems
+      items=sortFields
+      getLabelAndIcon=label_and_icon
+      getLabel=label_of_field
+      onItemClick=changeSort
+    />
   </section>;
 };
