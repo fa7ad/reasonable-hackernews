@@ -9064,11 +9064,6 @@ realpath-native@^1.1.0:
   dependencies:
     util.promisify "^1.0.0"
 
-reason-promise@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/reason-promise/-/reason-promise-1.0.2.tgz#22b9bb4097ce511190182b948aef11427d5b8b86"
-  integrity sha512-j8DWV+71wNEKQmyW6zBOowIZq1Qec5CDWyLI37BvgOmAZgRFGFQ1MaJnbhqDe3JsYmaGyqdNMmpCJLl9EDbDAg==
-
 reason-react@^0.7.1:
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/reason-react/-/reason-react-0.7.1.tgz#e6acea88542cd44398cd980093b8a2ab2722744e"
@@ -9100,12 +9095,30 @@ redent@^3.0.0:
     indent-string "^4.0.0"
     strip-indent "^3.0.0"
 
+reductive-dev-tools@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/reductive-dev-tools/-/reductive-dev-tools-2.0.0.tgz#0e359d0b4b4f954ac68119f1e8b096b344051a94"
+  integrity sha512-8U/RJ1TbCBV9gUYP+TVv009ARHguiYinEGU7jumlkYA9j/1P5o/kTPe4dFf9tuw7P5TIttZBWSI4FBLj3ExUuQ==
+
 reductive@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/reductive/-/reductive-2.0.1.tgz#23062796549f329bc4216adaad96fe103a120f29"
   integrity sha512-uOaB+oJSp/dia2T7issdqDvfBhlZrzZ0lYlVd73Pn0MzIBl/jGqEWuA/JbT5KzpRRCTs/OS5XhelkVQKfyadTw==
   dependencies:
     use-subscription "^1.0.0"
+
+redux-devtools-extension@^2.13.8:
+  version "2.13.8"
+  resolved "https://registry.yarnpkg.com/redux-devtools-extension/-/redux-devtools-extension-2.13.8.tgz#37b982688626e5e4993ff87220c9bbb7cd2d96e1"
+  integrity sha512-8qlpooP2QqPtZHQZRhx3x3OP5skEV1py/zUdMY28WNAocbafxdG2tRD1MWE7sp8obGMNYuLWanhhQ7EQvT1FBg==
+
+redux@^4.0.5:
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/redux/-/redux-4.0.5.tgz#4db5de5816e17891de8a80c424232d06f051d93f"
+  integrity sha512-VSz1uMAH24DM6MF72vcojpYPtrTUu3ByVWfPL1nPfVRb5mZVTve5GnNCUV53QM/BZ66xfWrm0CTWoM+Xlz8V1w==
+  dependencies:
+    loose-envify "^1.4.0"
+    symbol-observable "^1.2.0"
 
 regenerate-unicode-properties@^8.2.0:
   version "8.2.0"
@@ -10277,6 +10290,11 @@ svgo@^1.0.0, svgo@^1.2.2:
     stable "^0.1.8"
     unquote "~1.1.1"
     util.promisify "~1.0.0"
+
+symbol-observable@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
+  integrity sha512-e900nM8RRtGhlV36KGEU9k65K3mPb1WV70OdjfxlG2EAuM1noi/E/BaW/uMhL7bPEssK8QV57vN3esixjUvcXQ==
 
 symbol-tree@^3.2.2:
   version "3.2.4"

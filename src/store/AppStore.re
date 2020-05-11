@@ -2,14 +2,17 @@ open Sort;
 open Post;
 open AppData;
 
-type ReduxThunk.thunk(_) +=
-  | SortAction(sortAction)
-  | PostAction(postAction);
 
 type appState = {
   posts: list(post),
   sort,
 };
+
+type ReduxThunk.thunk(_) +=
+  | SortAction(sortAction)
+  | PostAction(postAction)
+  | DevToolsUpdate(appState);
+
 
 let initialState = {
   posts: [],
@@ -19,13 +22,14 @@ let initialState = {
   },
 };
 
-let appReducer = (state, action) => {
+let appReducer = (state: appState, action) => {
   switch (action) {
   | SortAction(action) => {...state, sort: sortReducer(state.sort, action)}
   | PostAction(action) => {
       ...state,
       posts: postReducer(state.posts, action),
     }
+  | DevToolsUpdate(_) => state
   | _ => state
   };
 };
@@ -33,8 +37,22 @@ let appReducer = (state, action) => {
 let thunkedLogger = (store, next) =>
   Middleware.thunk(store) @@ Middleware.logger(store) @@ next;
 
+let storeCreator =
+  ReductiveDevTools.Connectors.enhancer(
+    ~options=
+      ReductiveDevTools.Extension.enhancerOptions(~name=__MODULE__, ()),
+    ~devToolsUpdateActionCreator=
+      devToolsState => DevToolsUpdate(devToolsState),
+    ~stateSerializer={
+      serialize: ReductiveDevTools.Utilities.Serializer.serializeObject,
+      deserialize: ReductiveDevTools.Utilities.Serializer.deserializeObject,
+    },
+    (),
+  ) @@
+  Reductive.Store.create;
+
 let appStore =
-  Reductive.Store.create(
+  storeCreator(
     ~reducer=appReducer,
     ~preloadedState=initialState,
     ~enhancer=thunkedLogger,

@@ -17,11 +17,11 @@
   "suffix": ".bs.js",
   "namespace": true,
   "bs-dependencies": [
-    "reason-react",
-    "reductive",
     "bs-axios",
     "decco",
-    "reason-promise"
+    "reason-react",
+    "reductive",
+    "reductive-dev-tools"
   ],
   "ppx-flags": ["bs-let/ppx", "decco/ppx"],
   "refmt": 3
