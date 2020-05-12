@@ -39,5 +39,5 @@ let label_of_field = field =>
   | Title => "Title"
   | Date => "Date"
   | Votes => "Votes"
-  | NoField => "None"
+  | NoField => {j|×|j}
   };

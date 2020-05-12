@@ -2,7 +2,6 @@ open Sort;
 open Post;
 open AppData;
 
-
 type appState = {
   posts: list(post),
   sort,
@@ -12,7 +11,6 @@ type ReduxThunk.thunk(_) +=
   | SortAction(sortAction)
   | PostAction(postAction)
   | DevToolsUpdate(appState);
-
 
 let initialState = {
   posts: [],
