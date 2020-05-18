@@ -34,7 +34,10 @@
     "prebuild": "bsb -make-world"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "rules": {
+      "import/no-webpack-loader-syntax": "off"
+    }
   },
   "browserslist": {
     "production": [
