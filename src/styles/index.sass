@@ -18,17 +18,20 @@ body
 #root
   flex-grow: 1
 
-
 .navbar
   background-color: $blanco
   border-bottom: 1px solid $alt-color
   display: flex
   justify-content: space-between
+  > *
+    flex: 1 0 0
   .brand
-    flex: 0 0 3em
+    flex: 0 0 0
     padding: 0.5em
+    text-align: center
+    &-logo
+      width: 2em
   .navbar-menu
-    flex: 1 1 50%
     display: flex
     justify-content: flex-end
     a
@@ -48,22 +51,79 @@ body
         &:hover
           background-color: $brand-color
 
-.container
-  margin: 0 auto
-  width: 100%
-  height: 100%
-  max-width: 1200px
-  background-color: $blanco
-  box-shadow: 0 5px 5px $alt-color
-  padding: 1em
-
-.row
-  width: calc(100% + 2em)
-  margin: 0 -1em
-  display: flex
-  flex-wrap: wrap
-  .col
+.grid
+  &__container
+    padding: 1em
+    max-width: 1200px
+    &--root
+      height: 100%
+      margin: 0 auto
+      background-color: $blanco
+      box-shadow: 0 5px 5px $alt-color
+  &__row
+    margin: 0 -1em
+    display: flex
+    flex-wrap: wrap
+  &__col
     flex: 1 1 0
-    padding: 0 1em
-    @media screen and ( max-width: 768px )
-      flex: 0 0 100%
+    margin: 0 1em
+    &--sm
+      @media screen and ( max-width: 768px )
+        flex: 0 0 100%
+
+.postcard
+  padding: 1em
+  margin-top: 1em
+  box-shadow: 0 1px 4px $alt-color
+  border-radius: 5px
+  display: flex
+  &__score
+    flex-shrink: 0
+    display: flex
+    align-items: center
+    justify-content: center
+    text-align: center
+    margin-right: 1em
+    color: $brand-color
+  &__title
+    display: flex
+    align-items: center
+    margin-bottom: 0.25em
+    h3
+      margin: 0
+  &__url
+    font-weight: 300
+    padding: 0.25em
+    a, a:link, a:active
+      color: lighten($brand-color, 25%)
+      text-decoration: none
+      transition: color 150ms ease
+      margin: 0 0.25em
+    a:hover
+      color: $brand-color
+    a::after
+      content: ''
+      display: inline-block
+      width: 10px
+      height: 10px
+      margin-left: 0.25em
+      background: url(../assets/redirect.svg) no-repeat center / contain
+      opacity: 0.6
+  &__meta
+    font-size: 0.875em
+    display: flex
+    color: lighten($fg-color, 15%)
+    margin: 0 -0.25em
+  &__comments
+    margin: 0 .25em
+
+// UTILS
+.empty
+  visibility: hidden
+
+.icon
+  height: 1em
+  width: 1em
+  color: inherit
+  &.github
+    margin: 0 0.5em

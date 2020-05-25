@@ -4,15 +4,14 @@ type post = {
   [@decco.default 0]
   descendants: int,
   id: int,
-  [@decco.default []]
-  kids: list(int),
+  // [@decco.default []]
+  // kids: list(int),
   score: int,
   time: int,
   title: string,
   [@decco.key "type"]
   type_: string,
-  [@decco.default "#"]
-  url: string,
+  url: option(string),
 };
 
 [@decco]

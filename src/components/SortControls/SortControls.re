@@ -10,10 +10,9 @@ let make = () => {
 
   let changeSort = (clicked, _) => {
     let action =
-      switch (order, field == clicked, clicked == NoField) {
-      | (_, _, true) => Sort.Clear
-      | (Ascending, true, _) => Sort.SortDescending(clicked)
-      | (Descending, true, _) => Sort.SortAscending(clicked)
+      switch (clicked, order, clicked == field) {
+      | (NoField, _, _) => Sort.Clear
+      | (_, Ascending, true) => Sort.SortDescending(clicked)
       | _ => Sort.SortAscending(clicked)
       };
     dispatch(AppStore.SortAction(action)) |> ignore;
@@ -40,10 +39,7 @@ let make = () => {
           {getLabelAndIcon(field)}
         </span>
       },
-      switch (order) {
-      | NoSort => sortFields
-      | _ => [NoField, ...sortFields]
-      },
+      order == NoSort ? sortFields : [NoField, ...sortFields],
     );
   ();
 

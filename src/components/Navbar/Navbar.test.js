@@ -7,3 +7,9 @@ test('renders the react logo', () => {
   const logo = screen.getByRole(/logo/);
   expect(logo).toBeInTheDocument();
 });
+
+test('renders github handle', () => {
+  render(<Navbar />);
+  const handle = screen.getByText('@fa7ad');
+  expect(handle).toBeInTheDocument();
+})

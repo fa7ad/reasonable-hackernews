@@ -21,7 +21,8 @@
     "decco",
     "reason-react",
     "reductive",
-    "reductive-dev-tools"
+    "reductive-dev-tools",
+    "bs-webapi"
   ],
   "ppx-flags": ["bs-let/ppx", "decco/ppx"],
   "refmt": 3
