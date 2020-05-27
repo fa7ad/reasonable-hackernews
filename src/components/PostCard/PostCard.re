@@ -13,7 +13,7 @@ let get_host = link => {
 let epochToJsTimestamp = time => time *. 1000.;
 
 [@react.component]
-let make = (~postData) => {
+let make = (~postData: post) => {
   let {url, descendants, score, title, by, time} = postData;
 
   let timestamp = time->float_of_int->epochToJsTimestamp->Js.Date.fromFloat;
