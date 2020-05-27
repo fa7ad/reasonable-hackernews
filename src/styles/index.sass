@@ -1,17 +1,22 @@
 @import '~modern-normalize'
 
-$brand-color: #ff4000
-$fg-color: #2F4858
-$bg-color: #fdf6f1
-$alt-color: #FFE6D6
-$blanco: #ffffff
+$primary: #2F4858
+$primary-light: #5a7385
+$primary-dark: #04212f
+$secondary: #ff4000
+$secondary-light: #ff773a
+$secondary-dark: #c30000
+$light: #fff
+$dark: #111
+$body-bg: #eceff1
+$bg-color: #fff
 
 html, body
   height: 100%
 
 body
-  color: $fg-color
-  background: $bg-color
+  color: $primary
+  background: $body-bg
   display: flex
   flex-direction: column
 
@@ -19,12 +24,15 @@ body
   flex-grow: 1
 
 .navbar
-  background-color: $blanco
-  border-bottom: 1px solid $alt-color
+  background-color: $light
+  border-bottom: 1px solid $secondary
   display: flex
   justify-content: space-between
   > *
     flex: 1 0 0
+  .empty
+    @media screen and ( max-width: 768px )
+      display: none
   .brand
     flex: 0 0 0
     padding: 0.5em
@@ -39,27 +47,22 @@ body
       align-items: center
       padding: 1em 0.5em
       &, &:link, &:active
-        color: $brand-color
+        color: $primary
         text-decoration: none
         cursor: pointer
       &:hover
         background-color: $bg-color
       &.github-link
         margin-left: 1em
-        background-color: $fg-color
-        color: $blanco
+        background-color: $primary
+        color: $light
         &:hover
-          background-color: $brand-color
+          background-color: $secondary
 
 .grid
   &__container
     padding: 1em
-    max-width: 1200px
-    &--root
-      height: 100%
-      margin: 0 auto
-      background-color: $blanco
-      box-shadow: 0 5px 5px $alt-color
+    max-width: 960px
   &__row
     margin: 0 -1em
     display: flex
@@ -71,11 +74,17 @@ body
       @media screen and ( max-width: 768px )
         flex: 0 0 100%
 
+.grid__container.grid__container--root
+  min-height: calc(100% - 3em)
+  margin: 0 auto
+  background-color: $light
+  box-shadow: 0 1em 1em rgba($primary-light, 0.2)
+
 .postcard
   padding: 1em
   margin-top: 1em
-  box-shadow: 0 1px 4px $alt-color
-  border-radius: 5px
+  border: 0.5px solid $primary-light
+  box-shadow: 0 0 0 0.5px $secondary-dark
   display: flex
   &__score
     flex-shrink: 0
@@ -84,23 +93,26 @@ body
     justify-content: center
     text-align: center
     margin-right: 1em
-    color: $brand-color
+    color: $secondary
   &__title
     display: flex
     align-items: center
     margin-bottom: 0.25em
+    cursor: pointer
+    &:hover
+      color: $primary-dark
     h3
       margin: 0
   &__url
     font-weight: 300
     padding: 0.25em
     a, a:link, a:active
-      color: lighten($brand-color, 25%)
+      color: $secondary-light
       text-decoration: none
       transition: color 150ms ease
       margin: 0 0.25em
     a:hover
-      color: $brand-color
+      color: $secondary
     a::after
       content: ''
       display: inline-block
@@ -112,10 +124,13 @@ body
   &__meta
     font-size: 0.875em
     display: flex
-    color: lighten($fg-color, 15%)
-    margin: 0 -0.25em
-  &__comments
-    margin: 0 .25em
+    color: $primary-light
+  &__author
+    color: $primary-dark
+  &__dot
+    margin: 0 .5em
+    @media screen and ( max-width: 768px )
+      margin: 0 0.125em
 
 // UTILS
 .empty

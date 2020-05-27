@@ -10,9 +10,19 @@ let get_host = link => {
   };
 };
 
+let epochToJsTimestamp = time => time *. 1000.;
+
 [@react.component]
-let make = (~postData: post) => {
-  let {url, descendants, score, title} = postData;
+let make = (~postData) => {
+  let {url, descendants, score, title, by, time} = postData;
+
+  let timestamp = time->float_of_int->epochToJsTimestamp->Js.Date.fromFloat;
+
+  let timeDifference =
+    DateFns.formatDistanceToNow(
+      `Date(timestamp),
+      {includeSeconds: true, addSuffix: true},
+    );
 
   let externalLink =
     switch (url) {
@@ -42,6 +52,10 @@ let make = (~postData: post) => {
         externalLink
       </div>
       <div className="postcard__meta">
+        <div className="postcard__author"> {j|Posted by $by|j}->rst </div>
+        <div className="postcard__dot"> {js|·|js}->rst </div>
+        <div className="postcard__time"> timeDifference->rst </div>
+        <div className="postcard__dot"> {js|·|js}->rst </div>
         <div className="postcard__comments">
           {j|$comments comments|j}->rst
         </div>

@@ -3,20 +3,15 @@ let make = () => {
   let dispatch = AppStore.useDispatch();
   React.useEffect1(
     () => {
-      dispatch(ReduxThunk.Thunk(Actions.fetchPosts));
-      Some(() => ());
+      dispatch(ReduxThunk.Thunk(Actions.fetchPosts))
+      |> Utils.React.ignoreEffect
     },
     [|dispatch|],
   );
   <>
     <Navbar />
     <div className="grid__container grid__container--root">
-      <div> "learn reason"->React.string </div>
-      <div className="grid__row">
-        <div className="grid__col grid__col--sm"> "A"->React.string </div>
-        <div className="grid__col grid__col--sm"> "B"->React.string </div>
-        <div className="grid__col grid__col--sm"> "C"->React.string </div>
-      </div>
+      <div> "Reasonable HackerNews"->React.string </div>
       <PostCard
         postData={
           by: "fa7ad",

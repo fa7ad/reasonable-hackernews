@@ -17,4 +17,5 @@ module Window = {
 
 module React = {
   let map_list = fn => React.array @< map_list_to_array(fn);
+  let ignoreEffect = _ => Some(() => ());
 };

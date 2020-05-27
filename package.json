@@ -6,6 +6,7 @@
     "bs-axios": "^0.0.43",
     "bs-let": "^0.1.16",
     "bs-webapi": "^0.15.9",
+    "date-fns": "^2.14.0",
     "modern-normalize": "^0.6.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

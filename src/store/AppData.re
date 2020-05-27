@@ -4,8 +4,6 @@ type post = {
   [@decco.default 0]
   descendants: int,
   id: int,
-  // [@decco.default []]
-  // kids: list(int),
   score: int,
   time: int,
   title: string,
