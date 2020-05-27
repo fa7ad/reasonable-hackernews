@@ -4,10 +4,13 @@ let rst = React.string;
 let get_host = link => {
   let matches = Js.String.match(Utils.urlRegex, link);
   let hostname = Belt.Array.get(matches->Belt.Option.getWithDefault([||]), 4);
-  switch (hostname) {
-  | Some(host) => host
-  | _ => Js.String.slice(~from=0, ~to_=30, link) ++ "..."
-  };
+  (
+    switch (hostname) {
+    | Some(host) => host
+    | _ => Js.String.slice(~from=0, ~to_=30, link) ++ "..."
+    }
+  )
+  |> Js.String.replaceByRe([%re {|/^www\./i|}], "");
 };
 
 let epochToJsTimestamp = time => time *. 1000.;
