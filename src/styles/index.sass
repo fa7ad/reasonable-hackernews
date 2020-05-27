@@ -79,6 +79,7 @@ body
   margin: 0 auto
   background-color: $light
   box-shadow: 0 1em 1em rgba($primary-light, 0.2)
+  position: relative
 
 .postcard
   padding: 1em
@@ -87,7 +88,7 @@ body
   box-shadow: 0 0 0 0.5px $secondary-dark
   display: flex
   &__score
-    flex-shrink: 0
+    flex: 0 0 2em
     display: flex
     align-items: center
     justify-content: center
@@ -95,15 +96,17 @@ body
     margin-right: 1em
     color: $secondary
   &__title
-    display: flex
-    align-items: center
+    display: inline-block
     margin-bottom: 0.25em
     cursor: pointer
     &:hover
       color: $primary-dark
     h3
       margin: 0
+      display: inline
   &__url
+    display: inline
+    white-space: pre
     font-weight: 300
     padding: 0.25em
     a, a:link, a:active
@@ -142,3 +145,43 @@ body
   color: inherit
   &.github
     margin: 0 0.5em
+
+
+// Spinners
+
+.loading
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  display: flex
+  align-items: center
+  justify-content: center
+  background-color: rgba(lighten($secondary-light, 35%), 0.75)
+
+@keyframes recursive-circle
+  0%
+    transform: rotate(0)
+  100%
+    transform: rotate(360deg)
+
+.spinner
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 4rem
+  width: 4rem
+  border: 2px solid $secondary
+  border-top-color: transparent
+  border-radius: 50%
+  animation: recursive-circle 2s linear infinite
+  &::after
+    content: ''
+    display: block
+    height: 50%
+    width: 50%
+    border-radius: 50%
+    border: 2px solid $secondary
+    animation: recursive-circle 1s -1s linear infinite reverse
+    border-top-color: transparent

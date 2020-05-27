@@ -14,7 +14,7 @@ let epochToJsTimestamp = time => time *. 1000.;
 
 [@react.component]
 let make = (~postData: post) => {
-  let {url, descendants, score, title, by, time} = postData;
+  let {id, url, descendants, score, title, by, time} = postData;
 
   let timestamp = time->float_of_int->epochToJsTimestamp->Js.Date.fromFloat;
 
@@ -36,10 +36,7 @@ let make = (~postData: post) => {
     };
 
   let gotoLink = _ =>
-    switch (url) {
-    | Some(url) => Utils.Window.open_blank(url)
-    | None => ()
-    };
+    Utils.Window.open_blank({j|https://news.ycombinator.com/item?id=$id|j});
 
   let comments = string_of_int(descendants);
   let score = string_of_int(score);
@@ -48,7 +45,7 @@ let make = (~postData: post) => {
     <div className="postcard__score"> score->rst </div>
     <div className="postcard__contents">
       <div className="postcard__title">
-        <h3 onClick=gotoLink> title->rst </h3>
+        <h3 title="Open HN Thread" onClick=gotoLink> title->rst </h3>
         externalLink
       </div>
       <div className="postcard__meta">

@@ -1,6 +1,11 @@
+open AppStore;
+
+let getPosts = state => state.posts;
+
 [@react.component]
 let make = () => {
   let dispatch = AppStore.useDispatch();
+  let postsList = AppStore.useSelector(getPosts);
   React.useEffect1(
     () => {
       dispatch(ReduxThunk.Thunk(Actions.fetchPosts))
@@ -8,34 +13,24 @@ let make = () => {
     },
     [|dispatch|],
   );
+
+  let postView =
+    switch (postsList) {
+    | [] => <Loading />
+    | list =>
+      Utils.React.map_list(
+        post => {<PostCard postData=post key={post.id->string_of_int} />},
+        list,
+      )
+    };
+
   <>
     <Navbar />
     <div className="grid__container grid__container--root">
       <div> "Reasonable HackerNews"->React.string </div>
-      <PostCard
-        postData={
-          by: "fa7ad",
-          descendants: 123,
-          id: 1,
-          score: 20,
-          time: 1588806219,
-          title: "Hello World",
-          type_: "post",
-          url: Some({|http://google.com|}),
-        }
-      />
-      <PostCard
-        postData={
-          by: "fa7ad",
-          descendants: 123,
-          id: 1,
-          score: 20,
-          time: 1588806219,
-          title: "Hello World",
-          type_: "post",
-          url: Some({|http://google.com|}),
-        }
-      />
+      <div className="postlist__container">
+        postView
+      </div>
     </div>
   </>;
 };
