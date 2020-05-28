@@ -8,6 +8,8 @@ let urlRegex = [%re
   "/(([^:\/?#]+):)?((?:\/\/)?([^\/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/"
 ];
 
+let flip = (f, a, b) => f(b, a);
+
 module Window = {
   let _open = (name, url) =>
     Webapi.Dom.(Window.open_(~url, ~name, window)) |> ignore;

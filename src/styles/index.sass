@@ -135,6 +135,33 @@ body
     @media screen and ( max-width: 768px )
       margin: 0 0.125em
 
+.page__title
+  font-size: 1.5em
+  text-align: center
+  margin-bottom: 1em
+
+.sort__container
+  display: flex
+  justify-content: flex-end
+  align-items: center
+
+.sort__caption
+  margin: 0 1em
+
+.sort__item
+  cursor: pointer
+  user-select: none
+  margin: 0 2px
+  padding: 0.25em 0.5em
+  border: 1px solid $primary-light
+  display: flex
+  align-items: center
+  &:focus, &:hover, &--active
+    background-color: $secondary-light
+    color: $light
+    border: 1px solid $secondary-dark
+
+
 // UTILS
 .empty
   visibility: hidden

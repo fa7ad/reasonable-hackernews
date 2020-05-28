@@ -4,7 +4,7 @@ let getSort = (state: AppStore.appState) => state.sort;
 let sortFields = [Title, Date, Votes];
 
 [@react.component]
-let make = () => {
+let make = (~className="sort__item") => {
   let dispatch = AppStore.useDispatch();
   let {order, field} = AppStore.useSelector(getSort);
 
@@ -34,10 +34,15 @@ let make = () => {
 
   let nav_items =
     Utils.React.map_list(
-      field => {
-        <span onClick={changeSort(field)} key={label_of_field(field)}>
-          {getLabelAndIcon(field)}
-        </span>
+      field_ => {
+        let className =
+          field == field_ ? {j|$className $className--active|j} : className;
+        <span
+          onClick={changeSort(field_)}
+          key={label_of_field(field_)}
+          className>
+          {getLabelAndIcon(field_)}
+        </span>;
       },
       order == NoSort ? sortFields : [NoField, ...sortFields],
     );
