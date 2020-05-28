@@ -24,9 +24,9 @@ let make = (~className="sort__item") => {
         let label = label_of_field(name);
         switch (order, field == name, name == NoField) {
         | (_, _, true) => label->React.string
-        | (Ascending, true, _) => {j|$label ⭣|j}->React.string
-        | (Descending, true, _) => {j|$label ⭡|j}->React.string
-        | _ => {j|$label ⭥|j}->React.string
+        | (Ascending, true, _) => {j|$label ↓|j}->React.string
+        | (Descending, true, _) => {j|$label ↑|j}->React.string
+        | _ => {j|$label ↕|j}->React.string
         };
       },
       (order, field),
