@@ -1,22 +1,38 @@
 @import '~modern-normalize'
 
-$primary: #2F4858
-$primary-light: #5a7385
-$primary-dark: #04212f
-$secondary: #ff4000
-$secondary-light: #ff773a
-$secondary-dark: #c30000
-$light: #fff
-$dark: #111
-$body-bg: #eceff1
-$bg-color: #fff
+;:root
+  --primary: #2F4858
+  --primary-light: #5a7385
+  --primary-dark: #04212f
+  --secondary: #ff4000
+  --secondary-light: #ff773a
+  --secondary-lighter: #fff2ed
+  --secondary-lighter-bg: rgba(255, 242, 237, 0.75)
+  --secondary-dark: #c30000
+  --light: #fff
+  --dark: #111
+  --body-bg: #eceff1
+  --bg-color: #fff
+  @media screen and ( prefers-color-scheme: dark )
+    --primary: #f8b081
+    --primary-light: #f37e2b
+    --primary-dark: #fbded0
+    --secondary: #ff4000
+    --secondary-light: #ff773a
+    --secondary-lighter: #140600
+    --secondary-lighter-bg: rgba(20, 6, 0, 0.75)
+    --secondary-dark: #610000
+    --light: #1f1f1f
+    --dark: #eee
+    --body-bg: #0d1012
+    --bg-color: #111
 
 html, body
   height: 100%
 
 body
-  color: $primary
-  background: $body-bg
+  color: var(--primary)
+  background: var(--body-bg)
   display: flex
   flex-direction: column
 
@@ -24,8 +40,8 @@ body
   flex-grow: 1
 
 .navbar
-  background-color: $light
-  border-bottom: 1px solid $secondary
+  background-color: var(--light)
+  border-bottom: 1px solid var(--secondary)
   display: flex
   justify-content: space-between
   > *
@@ -47,17 +63,17 @@ body
       align-items: center
       padding: 1em 0.5em
       &, &:link, &:active
-        color: $primary
+        color: var(--primary)
         text-decoration: none
         cursor: pointer
       &:hover
-        background-color: $bg-color
+        background-color: var(--bg-color)
       &.github-link
         margin-left: 1em
-        background-color: $primary
-        color: $light
+        background-color: var(--primary)
+        color: var(--light)
         &:hover
-          background-color: $secondary
+          background-color: var(--secondary)
 
 .grid
   &__container
@@ -77,15 +93,14 @@ body
 .grid__container.grid__container--root
   min-height: calc(100% - 3em)
   margin: 0 auto
-  background-color: $light
-  box-shadow: 0 1em 1em rgba($primary-light, 0.2)
+  background-color: var(--light)
+  box-shadow: 0 1em 1em rgba(var(--primary-light), 0.2)
   position: relative
 
 .postcard
   padding: 1em
   margin-top: 1em
-  border: 0.5px solid $primary-light
-  box-shadow: 0 0 0 0.5px $secondary-dark
+  box-shadow: 0 0 0 1px var(--secondary-dark)
   display: flex
   &__score
     flex: 0 0 2em
@@ -94,13 +109,13 @@ body
     justify-content: center
     text-align: center
     margin-right: 1em
-    color: $secondary
+    color: var(--secondary)
   &__title
     display: inline-block
     margin-bottom: 0.25em
     cursor: pointer
     &:hover
-      color: $primary-dark
+      color: var(--primary-dark)
     h3
       margin: 0
       display: inline
@@ -110,12 +125,12 @@ body
     font-weight: 300
     padding: 0.25em
     a, a:link, a:active
-      color: $secondary-light
+      color: var(--secondary-light)
       text-decoration: none
       transition: color 150ms ease
       margin: 0 0.25em
     a:hover
-      color: $secondary
+      color: var(--secondary)
     a::after
       content: ''
       display: inline-block
@@ -124,12 +139,14 @@ body
       margin-left: 0.25em
       background: url(../assets/redirect.svg) no-repeat center / contain
       opacity: 0.6
+      @media screen and ( prefers-color-scheme: dark )
+        filter: invert(1)
   &__meta
     font-size: 0.875em
     display: flex
-    color: $primary-light
+    color: var(--primary-light)
   &__author
-    color: $primary-dark
+    color: var(--primary-dark)
   &__dot
     margin: 0 .5em
     @media screen and ( max-width: 768px )
@@ -153,13 +170,13 @@ body
   user-select: none
   margin: 0 2px
   padding: 0.25em 0.5em
-  border: 1px solid $primary-light
+  border: 1px solid var(--primary-light)
   display: flex
   align-items: center
   &:focus, &:hover, &--active
-    background-color: $secondary-light
-    color: $light
-    border: 1px solid $secondary-dark
+    background-color: var(--secondary-light)
+    color: var(--light)
+    border: 1px solid var(--secondary-dark)
 
 
 // UTILS
@@ -185,7 +202,7 @@ body
   display: flex
   align-items: center
   justify-content: center
-  background-color: rgba(lighten($secondary-light, 35%), 0.75)
+  background-color: var(--secondary-lighter-bg)
 
 @keyframes recursive-circle
   0%
@@ -199,7 +216,7 @@ body
   align-items: center
   height: 4rem
   width: 4rem
-  border: 2px solid $secondary
+  border: 2px solid var(--secondary)
   border-top-color: transparent
   border-radius: 50%
   animation: recursive-circle 2s linear infinite
@@ -209,6 +226,6 @@ body
     height: 50%
     width: 50%
     border-radius: 50%
-    border: 2px solid $secondary
+    border: 2px solid var(--secondary)
     animation: recursive-circle 1s -1s linear infinite reverse
     border-top-color: transparent
