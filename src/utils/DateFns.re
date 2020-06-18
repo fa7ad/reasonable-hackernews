@@ -1,4 +1,3 @@
-
 type options = {
   includeSeconds: bool,
   addSuffix: bool,
@@ -10,3 +9,5 @@ external formatDistanceToNow : ([@bs.unwrap] [
   | `Int(int)
   | `Date(Js.Date.t)
 ], options) => string = "default";
+
+// vim: set ft=reason
