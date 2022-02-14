@@ -16,7 +16,7 @@
     "js:start": "react-scripts start",
     "js:build": "react-scripts build",
     "re:clean": "rescript clean -with-deps",
-    "re:build": "rescript",
+    "re:build": "rescript build -with-deps",
     "re:start": "rescript build -w",
     "start": "run-p re:start js:start",
     "build": "run-s re:clean re:build js:build"
