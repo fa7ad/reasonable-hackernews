@@ -1,6 +1,6 @@
 # *Reason*able HackerNews
 
-[![Status](https://badgen.net/github/status/fa7ad/reasonable-hackernews/master?icon=zeit&label=&cache=600)](https://github.com/fa7ad/reasonable-hackernews/deployments) [![No Maintenance Intended](https://unmaintained.tech/badge.svg)](https://unmaintained.tech/)
+[![Status](https://badgen.net/github/status/fa7ad/reasonable-hackernews/master?icon=zeit&label=&cache=60)](https://github.com/fa7ad/reasonable-hackernews/deployments) [![No Maintenance Intended](https://unmaintained.tech/badge.svg)](https://unmaintained.tech/)
 
 This is a very small project to try and make a full-fledged\* React app using [ReScript](https://rescript-lang.org/) et al.
 
