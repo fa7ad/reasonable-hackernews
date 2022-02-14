@@ -1,1 +1,1 @@
-import './Root.bs';
+import './Root.bs.js'

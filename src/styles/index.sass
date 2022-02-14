@@ -1,6 +1,7 @@
 @import '~modern-normalize'
 
-;:root
+
+:root
   --primary: #2F4858
   --primary-light: #5a7385
   --primary-dark: #04212f
@@ -102,6 +103,23 @@ body
   margin-top: 1em
   box-shadow: 0 0 0 1px var(--secondary-dark)
   display: flex
+  a, a:link, a:active
+    color: var(--secondary-light)
+    text-decoration: none
+    transition: color 150ms ease
+    margin: 0
+  a:hover
+    color: var(--secondary)
+  a::after
+    content: ''
+    display: inline-block
+    width: 10px
+    height: 10px
+    margin-left: 0.25em
+    background: url(../assets/redirect.svg) no-repeat center / contain
+    opacity: 0.6
+    @media screen and ( prefers-color-scheme: dark )
+      filter: invert(1)
   &__score
     flex: 0 0 2em
     display: flex
@@ -124,23 +142,6 @@ body
     white-space: pre
     font-weight: 300
     padding: 0.25em
-    a, a:link, a:active
-      color: var(--secondary-light)
-      text-decoration: none
-      transition: color 150ms ease
-      margin: 0 0.25em
-    a:hover
-      color: var(--secondary)
-    a::after
-      content: ''
-      display: inline-block
-      width: 10px
-      height: 10px
-      margin-left: 0.25em
-      background: url(../assets/redirect.svg) no-repeat center / contain
-      opacity: 0.6
-      @media screen and ( prefers-color-scheme: dark )
-        filter: invert(1)
   &__meta
     font-size: 0.875em
     display: flex
