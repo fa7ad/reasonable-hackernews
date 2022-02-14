@@ -1,4 +1,4 @@
-%raw(`require("./styles/index.sass")`)
+%%raw(`import "./styles/index.sass"`)
 
 module ServiceWorker = {
   @module("./serviceWorker")
