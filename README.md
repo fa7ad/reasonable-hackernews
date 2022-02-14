@@ -9,6 +9,7 @@ This is completely for the purpose of me learning ReScript and trying to integra
 This application pulls a few top stories from the HackerNews API and displays them in a very simple, responsive UI. I added a very basic sorting functionality as well.
 
 ~~The state management is done through *reductive* (a rewrite of Redux in ReasonML) and ReduxThunk.~~
+
 The state management this time around is completely done through `React.useReducer` and the Context API. This is simply because the ReScript ecosystem for React is currently lacking support for any good state management solution (such as Redux) ((completely my personal opinion)).
 
 ## Tooling
