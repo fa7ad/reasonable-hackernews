@@ -1,29 +1,29 @@
 {
   "name": "reasonable-hackernews",
-  "reason": {
-    "react-jsx": 3
-  },
-  "sources": {
-    "dir": "src",
-    "subdirs": true
-  },
-  "bsc-flags": ["-bs-super-errors", "-bs-no-version-header", "-bs-g"],
+  "sources": [
+    {
+      "dir": "src",
+      "subdirs": true
+    }
+  ],
   "package-specs": [
     {
-      "module": "commonjs",
+      "module": "es6",
       "in-source": true
     }
   ],
   "suffix": ".bs.js",
-  "namespace": true,
+  "reason": {
+    "react-jsx": 3
+  },
   "bs-dependencies": [
-    "bs-axios",
-    "decco",
-    "reason-react",
-    "reductive",
-    "reductive-dev-tools",
-    "bs-webapi"
+    "@rescript/react",
+    "@ryyppy/rescript-promise",
+    "bs-fetch",
+    "rescript-jzon",
+    "res-date-fns"
   ],
-  "ppx-flags": ["bs-let/ppx", "decco/ppx"],
-  "refmt": 3
+  "warnings": {
+    "error": "+101"
+  }
 }
