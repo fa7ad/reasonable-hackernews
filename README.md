@@ -10,7 +10,7 @@ This application pulls a few top stories from the HackerNews API and displays th
 
 ~~The state management is done through *reductive* (a rewrite of Redux in ReasonML) and ReduxThunk.~~
 
-The state management this time around is completely done through `React.useReducer` and the Context API. This is simply because the ReScript ecosystem for React is currently lacking support for any good state management solution (such as Redux) ((completely my personal opinion)).
+The state management this time around is completely done through `React.useReducer` and the Context API.
 
 ## Tooling
 This project uses [create-react-app](https://create-react-app.dev/) along with the ReScript compiler, and `npm-run-all` to facilitate running both simultaneously.
