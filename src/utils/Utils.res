@@ -1,23 +1,34 @@
-let \"@<" = (f, g, a) => f(g(a))
+open Js
 
-let compose = (fns, arg) => Js.Array2.reduceRight(fns, (a, f) => f(a), arg)
+let \"." = (f, g, a) => f(g(a))
 
 let urlRegex = %re("/(([^:\/?#]+):)?((?:\/\/)?([^\/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/")
 
-let flip = (f, a, b) => f(b, a)
+let mapPromiseAll = (xs, f) => Array2.map(xs, f)->Promise.all
 
-let tap = (f: 'a => unit, a) => {
-  f(a)
-  a
-}
-
-let mapAll = (xs, f) => Js.Array2.map(xs, f)->Promise.all
+type exn += Error({message: string}) | ErrorWithStack({message: string, stack: string})
 
 let get_host_from_url = link => {
-  open Js
-  String2.match_(link, urlRegex)
+  link
+  |> String.match_(urlRegex)
   |> Option.getWithDefault([])
-  |> (Belt_Array.get->flip)(4)
+  |> Belt_Array.get(_, 4)
   |> Option.getWithDefault(String.slice(~from=0, ~to_=30, link) ++ "...")
   |> String.replaceByRe(%re(`/^www\\./i`), "")
+}
+
+let decodeWithPromise = (data, codec) => {
+  switch Jzon.decodeWith(data, codec) {
+  | Ok(decoded) => decoded->Promise.resolve
+  | Error(err) =>
+    switch err {
+    | #SyntaxError(message) => Error({message: message})
+    | #MissingField(location, message) =>
+      ErrorWithStack({message: message, stack: location->Array.toString})
+    | #UnexpectedJsonType(location, message, _) =>
+      ErrorWithStack({message: message, stack: location->Array.toString})
+    | #UnexpectedJsonValue(location, message) =>
+      ErrorWithStack({message: message, stack: location->Array.toString})
+    }->Promise.reject
+  }
 }

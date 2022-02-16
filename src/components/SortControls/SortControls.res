@@ -9,7 +9,7 @@ let make = (~className) => {
   let sort = Store.useAppSelector(state => state.sort)
   let dispatch = Store.useAppDispatch()
 
-  let handleClick = (sort: sort) => (_e) => {
+  let handleClick = (sort: sort, _e) => {
     dispatch(Sort(sort))
   }
 

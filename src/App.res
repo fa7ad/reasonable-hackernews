@@ -1,38 +1,25 @@
 open Promise
 open Js.Array2
 
-exception MyError(string)
-
 @react.component
 let make = () => {
   let dispatch = Store.useAppDispatch()
 
   React.useEffect0(() => {
-    dispatch(AppStore.StartFetch)
+    open Data
+    open Utils
 
-    Data.fetchJson(Data.topstories_url)
-    ->then(data =>
-      switch Jzon.decodeWith(data, Data.Codecs.postIds) {
-      | Ok(post_ids) =>
-        post_ids
-        ->slice(~start=0, ~end_=20)
-        ->Utils.mapAll(id => Data.single_story_url(id)->Data.fetchJson)
-      | _ => reject(MyError("Failed to decode top stories"))
-      }
-    )
-    ->thenResolve(posts => posts->reduce((list_of_posts, single_post) =>
-        switch Jzon.decodeWith(single_post, Data.Codecs.post) {
-        | Ok(post) => concat(list_of_posts, [post])
-        | err =>
-          Js.log2("err", err)
-          list_of_posts
-        }
-      , []))
+    dispatch(AppStore.StartFetch)
+    ->resolve
+    ->then(() => fetchJson(topstories_url))
+    ->then(data => decodeWithPromise(data, Codecs.postIds))
+    ->thenResolve(slice(~start=0, ~end_=20))
+    ->then(post_ids => post_ids->mapPromiseAll(\"."(fetchJson, single_story_url)))
+    ->then(posts => posts->mapPromiseAll(post => decodeWithPromise(post, Codecs.post)))
     ->thenResolve(posts => dispatch(posts->AppStore.FetchSuccess))
     ->catch(err => {
       Js.log(err)
-      dispatch(AppStore.FetchFailure)
-      resolve()
+      dispatch(AppStore.FetchFailure)->resolve
     })
     ->ignore
 

@@ -6,13 +6,13 @@ let make = (~postData: Data.post) => {
 
   open Utils
   let externalLink = switch url {
-  | Some(url) => <span className="postcard__url"> {j`(${get_host_from_url(url)})`->rs} </span>
+  | Some(url) => <span className="postcard__url"> {`(${get_host_from_url(url)})`->rs} </span>
   | None => React.null
   }
 
-  let comments = string_of_int(descendants)
   let score = string_of_int(score)
   let timeDifference = DateTime.get_time_ago(postData.time)
+  let comments = descendants |> Js.Option.getWithDefault(0) |> string_of_int
 
   let dot = <div className="postcard__dot"> {`·`->rs} </div>
 

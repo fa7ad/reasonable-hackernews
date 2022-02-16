@@ -5,9 +5,11 @@ let make = (~className) => {
   let posts = Store.useAppSelector(state => state.posts)
   let loading = Store.useAppSelector(state => state.loading)
 
-  switch loading {
-  | true => <section className> <Loading /> </section>
-  | false =>
-    <section className> {posts->map(post => <PostCard postData={post} key={post.id -> string_of_int} />)->React.array} </section>
-  }
+  <section className>
+    {if loading {
+      <Loading />
+    } else {
+      posts->map(post => <PostCard postData={post} key={post.id->string_of_int} />)->React.array
+    }}
+  </section>
 }

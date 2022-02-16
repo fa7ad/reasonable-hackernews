@@ -1,38 +1,32 @@
-let differenceToNow = time => int_of_float(Js.Date.now() /. 1000.) - time
+module Intervals = {
+  let millis = 1000.
+  let seconds = millis *. 60.
+  let minutes = seconds *. 60.
+  let hours = minutes *. 60.
+  let days = hours *. 24.
+  let weeks = days *. 7.
+  let months = days *. 30.
+}
+
+let differenceToNow = time => Js.Date.now() -. time
+
+let pluralizedAgo = (singular, plural, n) =>
+  n == 1. ? `1 ${singular} ago` : `${n -> int_of_float -> string_of_int} ${plural} ago`
 
 let get_time_ago = time => {
+  open Intervals
   let diff = differenceToNow(time)
-  if diff < 60 {
+  if diff < minutes {
     "just now"
-  } else if diff < 3600 {
-    let interval = diff / 60
-    switch interval {
-    | 1 => "1 minute ago"
-    | _ => interval->string_of_int ++ " minutes ago"
-    }
-  } else if diff < 86400 {
-    let interval = diff / 3600
-    switch interval {
-    | 1 => "1 hour ago"
-    | _ => interval->string_of_int ++ " hours ago"
-    }
-  } else if diff < 604800 {
-    let interval = diff / 86400
-    switch interval {
-    | 1 => "1 day ago"
-    | _ => interval->string_of_int ++ " days ago"
-    }
-  } else if diff < 2419200 {
-    let interval = diff / 604800
-    switch interval {
-    | 1 => "1 week ago"
-    | _ => interval->string_of_int ++ " weeks ago"
-    }
+  } else if diff < hours {
+    diff /. minutes |> pluralizedAgo("minute", "minutes")
+  } else if diff < days {
+    diff /. hours |> pluralizedAgo("hour", "hours")
+  } else if diff < weeks {
+    diff /. days |> pluralizedAgo("day", "days")
+  } else if diff < months {
+    diff /. weeks |> pluralizedAgo("week", "weeks")
   } else {
-    let interval = diff / 2419200
-    switch interval {
-    | 1 => "1 month ago"
-    | _ => interval->string_of_int ++ " months ago"
-    }
+    diff /. months |> pluralizedAgo("month", "months")
   }
 }

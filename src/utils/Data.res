@@ -2,9 +2,9 @@ type post = {
   id: int,
   title: string,
   by: string,
-  time: int,
+  time: float,
   score: int,
-  descendants: int,
+  descendants: option<int>,
   url: option<string>,
 }
 
@@ -32,9 +32,9 @@ module Codecs = {
     Jzon.field("id", Jzon.int),
     Jzon.field("title", Jzon.string),
     Jzon.field("by", Jzon.string),
-    Jzon.field("time", Jzon.int),
+    Jzon.field("time", Jzon.float),
     Jzon.field("score", Jzon.int),
-    Jzon.field("descendants", Jzon.int),
+    Jzon.field("descendants", Jzon.int)->Jzon.optional,
     Jzon.field("url", Jzon.string)->Jzon.optional,
   )
 
