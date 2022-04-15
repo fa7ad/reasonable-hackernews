@@ -8,25 +8,32 @@ module Intervals = {
   let months = days *. 30.
 }
 
+let epochToJsEpoch = epoch => epoch *. 1000.
+
 let differenceToNow = time => Js.Date.now() -. time
 
-let pluralizedAgo = (singular, plural, n) =>
-  n == 1. ? `1 ${singular} ago` : `${n -> int_of_float -> string_of_int} ${plural} ago`
+let pluralizedAgo = (singular, n) => {
+  let plural = singular ++ "s"
+  n == 1. ? `1 ${singular} ago` : `${n->int_of_float->string_of_int} ${plural} ago`
+}
 
 let get_time_ago = time => {
   open Intervals
-  let diff = differenceToNow(time)
+  let diff = time |> epochToJsEpoch |> differenceToNow
   if diff < minutes {
     "just now"
-  } else if diff < hours {
-    diff /. minutes |> pluralizedAgo("minute", "minutes")
-  } else if diff < days {
-    diff /. hours |> pluralizedAgo("hour", "hours")
-  } else if diff < weeks {
-    diff /. days |> pluralizedAgo("day", "days")
-  } else if diff < months {
-    diff /. weeks |> pluralizedAgo("week", "weeks")
   } else {
-    diff /. months |> pluralizedAgo("month", "months")
+    let (diff, unit) = if diff < hours {
+      (diff /. minutes, "minute")
+    } else if diff < days {
+      (diff /. hours, "hour")
+    } else if diff < weeks {
+      (diff /. days, "day")
+    } else if diff < months {
+      (diff /. weeks, "week")
+    } else {
+      (diff /. months, "month")
+    }
+    pluralizedAgo(unit, diff)
   }
 }
