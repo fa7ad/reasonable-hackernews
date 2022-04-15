@@ -6,6 +6,8 @@ type sort =
   | SortByTitleDesc
   | SortByScore
   | SortByScoreDesc
+  | SortByDate
+  | SortByDateDesc
 
 type appState = {
   posts: array<post>,
@@ -60,15 +62,25 @@ let reducer = (appState, appAction) => {
     | SortByScore => {
         ...appState,
         sort: sort,
-        posts: sortBy(appState.unsorted_posts, (post_a, post_b) =>
-          post_a.score - post_b.score
-        ),
+        posts: sortBy(appState.unsorted_posts, (post_a, post_b) => post_a.score - post_b.score),
       }
     | SortByScoreDesc => {
         ...appState,
         sort: sort,
+        posts: sortBy(appState.unsorted_posts, (post_a, post_b) => post_b.score - post_a.score),
+      }
+    | SortByDate => {
+        ...appState,
+        sort: sort,
         posts: sortBy(appState.unsorted_posts, (post_a, post_b) =>
-          post_b.score - post_a.score
+          int_of_float(post_b.time) - int_of_float(post_a.time)
+        ),
+      }
+    | SortByDateDesc => {
+        ...appState,
+        sort: sort,
+        posts: sortBy(appState.unsorted_posts, (post_a, post_b) =>
+          int_of_float(post_a.time) - int_of_float(post_b.time)
         ),
       }
     | NoSort => {...appState, posts: appState.unsorted_posts, sort: NoSort}

@@ -13,25 +13,34 @@ let make = (~className) => {
     dispatch(Sort(sort))
   }
 
+  let sp = `\u00A0`
   <>
     <div onClick={handleClick(NoSort)} className={getClassName(sort, NoSort, className)}>
-      {`=`->rs}
+      {`❌${sp}`->rs}
+    </div>
+    <div onClick={handleClick(SortByDate)} className={getClassName(sort, SortByDate, className)}>
+      {`🕒${sp}⬆️`->rs}
+    </div>
+    <div
+      onClick={handleClick(SortByDateDesc)}
+      className={getClassName(sort, SortByDateDesc, className)}>
+      {`🕒${sp}⬇️`->rs}
     </div>
     <div onClick={handleClick(SortByTitle)} className={getClassName(sort, SortByTitle, className)}>
-      {`T ⬆️`->rs}
+      {`⌨️${sp}⬆️`->rs}
     </div>
     <div
       onClick={handleClick(SortByTitleDesc)}
       className={getClassName(sort, SortByTitleDesc, className)}>
-      {`T ⬇️`->rs}
+      {`⌨️${sp}⬇️`->rs}
     </div>
     <div onClick={handleClick(SortByScore)} className={getClassName(sort, SortByScore, className)}>
-      {`S ⬆️`->rs}
+      {`🔢${sp}⬆️`->rs}
     </div>
     <div
       onClick={handleClick(SortByScoreDesc)}
       className={getClassName(sort, SortByScoreDesc, className)}>
-      {`S ⬇️`->rs}
+      {`🔢${sp}⬇️`->rs}
     </div>
   </>
 }
